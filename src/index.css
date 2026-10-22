@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #111113;
+  --ink: #f2efeb;
+  --accent: #f8c300;
+  --pnr-orange: #f47920;
+  --pnr-blue: #003399;
+  --ink-faint: rgba(242, 239, 235, 0.12);
+  --card-bg: #18181a;
+}
+
+@layer base {
+  body {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--ink);
+    background-color: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .font-syne {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .font-dot {
+    font-family: 'DotGothic16', sans-serif;
+  }
+
+  .font-mono-pnr {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Neo-Brutalist Pixel Rail Shadows & Card Utilities */
+.pixel-card-orange {
+  background: var(--card-bg);
+  border: 2px solid var(--ink);
+  box-shadow: 8px 8px 0px var(--pnr-orange);
+}
+
+.pixel-card-yellow {
+  background: var(--card-bg);
+  border: 2px solid var(--ink);
+  box-shadow: 8px 8px 0px var(--accent);
+}
+
+.pixel-card-white {
+  background: var(--card-bg);
+  border: 2px solid var(--ink);
+  box-shadow: 8px 8px 0px var(--ink);
+}
+
+.btn-pixel-action {
+  background: var(--ink);
+  color: #000;
+  border: 2px solid var(--ink);
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-pixel-action:hover {
+  background: var(--accent);
+  box-shadow: 4px 4px 0px var(--pnr-orange);
+  transform: translate(-2px, -2px);
+}
+
+.btn-pixel-action:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px transparent;
+}
+
+/* Moving Pixel Environment Animations */
+@keyframes pixelScrollHoriz {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -1600px;
+  }
+}
+
+@keyframes pnrTrainTraverse {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(120vw, 0, 0);
+  }
+}
+
+@keyframes pixelSteamDrift {
+  0% {
+    opacity: 0.9;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate3d(-20px, -15px, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-45px, -30px, 0);
+  }
+}
+
+.anim-pixel-mountains {
+  animation: pixelScrollHoriz 40s linear infinite;
+  image-rendering: pixelated;
+}
+
+.anim-pixel-track {
+  animation: pixelScrollHoriz 4s linear infinite;
+}
+
+.anim-pnr-train {
+  animation: pnrTrainTraverse 16s linear infinite;
+}
+
+.anim-pnr-steam {
+  animation: pixelSteamDrift 1.2s steps(4) infinite;
+}
+
+.motion-express .anim-pnr-train {
+  animation-duration: 9s;
+}
+
+.motion-paused,
+.motion-paused * {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-pixel-mountains,
+  .anim-pixel-track,
+  .anim-pnr-train,
+  .anim-pnr-steam {
+    animation: none !important;
+  }
+}
+
+/* Print optimizations */
+@media print {
+  header,
+  footer,
+  nav,
+  button,
+  form,
+  .no-print,
+  .skyline,
+  .fixed {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-family: monospace !important;
+  }
+
+  #printable-receipt {
+    display: block !important;
+    border: 3px solid #000 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    width: 100% !important;
+    background: white !important;
+    color: black !important;
+  }
+}

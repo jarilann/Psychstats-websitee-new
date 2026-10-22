@@ -1,0 +1,6 @@
+{
+  "name": "RailSurvey Express - Likert Research Station",
+  "description": "A train-themed academic research survey portal featuring question previews, informed consent, 5-point Likert scale questionnaire, automated email receipt, researcher analytics, and Excel export.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
